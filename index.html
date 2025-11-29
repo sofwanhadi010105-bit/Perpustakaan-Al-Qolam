@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perpustakaan Al-Qolam</title>
     <style>
-        * {
+     * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -97,6 +97,36 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: #0e7c66;
+            padding: 15px 20px;
+            gap: 20px;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
         /* ---------------------------------- */
         /* LOGIN MODAL */
         /* ---------------------------------- */
@@ -128,27 +158,8 @@
             animation: slideDown 0.3s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        @keyframes slideDown { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
 
         .modal-header {
             display: flex;
@@ -234,6 +245,28 @@
         }
 
         /* ---------------------------------- */
+        /* RESPONSIVE */
+        /* ---------------------------------- */
+        @media (max-width: 850px) {
+            .nav-menu,
+            .nav-right {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: flex;
+            }
+        }
+
+        /* ---------------------------------- */
         /* BANNER */
         /* ---------------------------------- */
         .banner {
@@ -260,62 +293,94 @@
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
 
-        /* ---------------------------------- */
-        /* WELCOME SECTION */
-        /* ---------------------------------- */
-        .welcome {
-            padding: 50px 20px;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: left;
-        }
+       /* ---------------------------------- */
+/* WELCOME SECTION */
+/* ---------------------------------- */
+.welcome {
+    padding: 50px 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+}
 
-        .welcome .container {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 40px;
-        }
+.welcome .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+}
 
-        .welcome-text {
-            width: 60%;
-            max-width: 560px;
-        }
+.welcome-text {
+    width: 60%;
+    max-width: 560px;
+}
 
-        .welcome-text h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #222;
-        }
+.welcome-text h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #222;
+}
 
-        .welcome-text p {
-            font-size: 15px;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
+.welcome-text p {
+    font-size: 15px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
 
-        .socmed p {
-            background: #eaeaea;
-            width: fit-content;
-            padding: 6px 12px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
+.socmed p {
+    background: #eaeaea;
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
 
-        .welcome-video {
-            width: 45%;
-            transform: translateX(-60px);
-        }
+.welcome-video {
+    width: 45%;
+    transform: translateX(-60px);
+}
 
-        .welcome-video iframe {
-            width: 108%;
-            height: 340px;
-            border-radius: 12px;
-            border: none;
-        }
+.welcome-video iframe {
+    width: 108%;
+    height: 340px;
+    border-radius: 12px;
+    border: none;
+}
+
+
+/* ---------------------------------- */
+/* RESPONSIVE (HP / TABLET) */
+/* ---------------------------------- */
+@media (max-width: 900px) {
+
+    .welcome .container {
+        flex-direction: column;       
+        align-items: center;
+        text-align: center;
+    }
+
+    .welcome-text {
+        width: 100%;                 
+    }
+
+    .welcome-video {
+        width: 100%;
+        transform: none;            
+        margin-top: 20px;
+    }
+
+    .welcome-video iframe {
+        width: 100%;                   
+        height: 230px;                 
+    }
+
+    .welcome-text h2 {
+        font-size: 28px;
+    }
+}
 
         /* ---------------------------------- */
         /* NEWS SECTION */
@@ -637,50 +702,77 @@
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="container">
-            <div class="nav-left">
-                <img src="img/logo1.png" alt="Logo">
-                <img src="img/logo2.png" alt="Logo 2">
-            </div>
-
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Beranda</a></li>
-                <li><a href="koleksi.html">Koleksi</a></li>
-                <li><a href="tentang kami.html">Tentang Kami</a></li>
-                <li><a href="peminjaman.html">Peminjaman</a></li>
-                <li><a href="acara.html">Acara</a></li>
-            </ul>
-
-            <div class="nav-right">
-                <button class="login-btn" onclick="openLoginModal()">Login</button>
-                <input type="text" class="search-input" placeholder="Search...">
-            </div>
+ <!-- NAVBAR -->
+<nav>
+    <div class="container">
+        <!-- LEFT LOGO -->
+        <div class="nav-left">
+            <img src="img/logo1.png" alt="Logo">
+            <img src="img/logo2.png" alt="Logo 2">
         </div>
-    </nav>
 
-    <!-- LOGIN MODAL -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Form Login</h2>
-                <button class="close-btn" onclick="closeLoginModal()">X</button>
-            </div>
-            <form onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <input type="text" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="submit-btn">Login</button>
-            </form>
-            <div class="register-link">
-                Belum punya akun? <a href="#">Daftar</a>
-            </div>
+        <!-- MENU DESKTOP -->
+        <ul class="nav-menu">
+            <li><a href="index.html" class="active">Beranda</a></li>
+            <li><a href="koleksi.html">Koleksi</a></li>
+            <li><a href="tentang kami.html">Tentang Kami</a></li>
+            <li><a href="peminjaman.html">Peminjaman</a></li>
+            <li><a href="acara.html">Acara</a></li>
+        </ul>
+
+        <!-- RIGHT ACTION -->
+        <div class="nav-right">
+            <button class="login-btn" onclick="openLoginModal()">Login</button>
+            <input type="text" class="search-input" placeholder="Search...">
+        </div>
+
+        <!-- HAMBURGER (MOBILE) -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
+
+    <!-- MENU MOBILE -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="active">Beranda</a>
+        <a href="koleksi.html">Koleksi</a>
+        <a href="tentang kami.html">Tentang Kami</a>
+        <a href="peminjaman.html">Peminjaman</a>
+        <a href="acara.html">Acara</a>
+
+        <button class="login-btn" onclick="openLoginModal()">Login</button>
+        <input type="text" class="search-input" placeholder="Search...">
+    </div>
+</nav>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Form Login</h2>
+            <button class="close-btn" onclick="closeLoginModal()">X</button>
+        </div>
+
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <input type="text" placeholder="Username" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+
+        <div class="register-link">
+            Belum punya akun? <a href="#">Daftar</a>
+        </div>
+    </div>
+</div>
+
 
     <!-- BANNER -->
     <header class="banner">
@@ -824,36 +916,53 @@
 
     <script src="news.js"></script>
     <script>
-        // Login Modal Functions
-        function openLoginModal() {
-            document.getElementById('loginModal').classList.add('active');
-        }
+    /* ================================
+       LOGIN MODAL
+    ================================= */
 
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.remove('active');
-        }
+    function openLoginModal() {
+        document.getElementById('loginModal').classList.add('active');
+    }
 
-        function handleLogin(event) {
-            event.preventDefault();
-            alert('Login berhasil!');
+    function closeLoginModal() {
+        document.getElementById('loginModal').classList.remove('active');
+    }
+
+    function handleLogin(event) {
+        event.preventDefault();
+        alert('Login berhasil!');
+        closeLoginModal();
+    }
+
+    // Tutup modal ketika klik area gelap
+    window.onclick = function (event) {
+        const modal = document.getElementById('loginModal');
+        if (event.target === modal) {
             closeLoginModal();
         }
+    };
 
-        // Close modal when clicking outside
-        window.onclick = function (event) {
-            const modal = document.getElementById('loginModal');
-            if (event.target === modal) {
-                closeLoginModal();
-            }
-        }
 
-        // Disable right click
-        document.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-        });
-    </script>
+    /* ================================
+       HAMBURGER MENU (RESPONSIVE NAVBAR)
+    ================================= */
+
+    function toggleMenu() {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("active");
+    }
+
+
+    /* ================================
+       DISABLE RIGHT CLICK (OPTIONAL)
+    ================================= */
+
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    });
+</script>
+
 
 </body>
 
 </html>
-
